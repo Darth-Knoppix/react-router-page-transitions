@@ -1,49 +1,90 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Switch, Route, NavLink, useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
+
   return (
-    <BrowserRouter>
-      <div className="container-fluid bg-light" style={{ height: "100vh" }}>
-        <div className="row">
-          <nav
-            className="col-6 col-sm-4 col-md-2 bg-dark py-5"
-            style={{ height: "100vh" }}
-          >
-            <ul className="nav nav-pills flex-column">
-              <li className="nav-item">
-                <NavLink to="/" exact className="nav-link text-white">
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/about" className="nav-link text-white">
-                  About
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/settings" className="nav-link text-white">
-                  Settings
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-          <main className="col-6 col-sm-8 col-md-10 py-5">
-            <Switch>
+    <div className="container-fluid bg-light" style={{ height: "100vh" }}>
+      <div className="row">
+        <nav
+          className="col-6 col-sm-4 col-md-2 bg-dark py-5"
+          style={{ height: "100vh", zIndex: 1000 }}
+        >
+          <ul className="nav nav-pills flex-column">
+            <li className="nav-item">
+              <NavLink to="/" exact className="nav-link text-white">
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/about" className="nav-link text-white">
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/settings" className="nav-link text-white">
+                Settings
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <main
+          className="col-6 col-sm-8 col-md-10 py-5"
+          style={{ overflowX: "hidden", position: "relative" }}
+        >
+          <AnimatePresence>
+            <Switch location={location} key={location.pathname}>
               <Route path="/about" component={About} />
               <Route path="/settings" component={Settings} />
               <Route path="/" component={Home} />
             </Switch>
-          </main>
-        </div>
+          </AnimatePresence>
+        </main>
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
 
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    x: "-100vw",
+    scale: 0.8
+  },
+  in: {
+    opacity: 1,
+    x: 0,
+    scale: 1
+  },
+  out: {
+    opacity: 0,
+    x: "100vw",
+    scale: 1.2
+  }
+};
+
+const pageTransition = {
+  type: "tween",
+  ease: "anticipate",
+  duration: 0.5
+};
+
+const pageStyle = {
+  position: "absolute"
+};
+
 function About() {
   return (
-    <div>
+    <motion.div
+      style={pageStyle}
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
       <h1>About</h1>
       <p>
         Let's animate transitions between React Router routes with Framer Motion
@@ -55,13 +96,21 @@ function About() {
       </p>
       <h2>React Router</h2>
       <p>One of the most well known routers in the React ecosystem.</p>
-    </div>
+    </motion.div>
   );
 }
 
 function Settings() {
   return (
-    <div className="row">
+    <motion.div
+      style={pageStyle}
+      className="row"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
       <div className="col-md-8">
         <h1>Settings</h1>
         <form>
@@ -117,17 +166,26 @@ function Settings() {
           </fieldset>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }
+
 function Home() {
   return (
-    <div>
+    <motion.div
+      style={pageStyle}
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
       <h1>Home</h1>
       <p>
         Let's animate transitions between React Router routes with Framer Motion
       </p>
-    </div>
+    </motion.div>
   );
 }
+
 export default App;
