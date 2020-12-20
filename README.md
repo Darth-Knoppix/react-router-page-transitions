@@ -1,4 +1,4 @@
-![Title card for Page Transitions in React Router with Framer Motion](https://blog.sethcorker.com/content/images/size/w2000/2019/11/Transitions---Dev.png)
+![Title card for Page Transitions in React Router with Framer Motion](https://res.cloudinary.com/practicaldev/image/fetch/s--v5EC4lHq--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/ua6715r0mc4d4grqpch8.png)
 
 # React Router page transitions - Framer Motion
 
