@@ -1,14 +1,14 @@
 {
   "name": "react-router-page-transitions",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "framer-motion": "^1.6.15",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "framer-motion": "^4.1.17",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,6 +32,6 @@
     ]
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.11.2"
+    "@fortawesome/fontawesome-free": "^5.15.3"
   }
 }
